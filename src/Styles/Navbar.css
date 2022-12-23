@@ -1,0 +1,11 @@
+.topnav-right {
+  float: right;
+}
+.downav-centre {
+  margin: auto;
+  padding: 10px;
+}
+button {
+  border: none;
+  background-color: transparent;
+}
