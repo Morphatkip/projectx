@@ -5,11 +5,11 @@ function NavbarTop() {
   return (
     <div>
       <nav className="navbar navbar-light bg-light">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand mx-4" to="/">
           {" "}
           Norov Technologies
         </Link>
-        <div className="topnav-right">Account</div>
+        <div className="topnav-right mx-4">Account</div>
       </nav>
     </div>
   );

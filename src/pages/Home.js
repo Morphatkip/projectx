@@ -2,13 +2,14 @@ import React from "react";
 import Contents from "../components/Contents";
 import NavBarDown from "../components/Navbar/NavBarDown";
 import NavbarTop from "../components/Navbar/NavbarTop";
-import { Outlet } from "react-router-dom";
-function Home() {
+
+function Home({ setProductDetails }) {
+  const handleChange = () => {};
   return (
     <div className="container">
       <NavbarTop />
       <NavBarDown />
-      <Contents />
+      <Contents setProductDetails={setProductDetails} />
     </div>
   );
 }
