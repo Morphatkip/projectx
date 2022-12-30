@@ -1,22 +1,15 @@
-import {
-  collection,
-  db,
-  getDocs,
-  getStorage,
-  ref,
-  getDownloadURL,
-} from "../Utils/firebase";
+import { collection, db, getDocs } from "../Utils/firebase";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/Content.css";
+import NavBarDown from "./Navbar/NavBarDown";
 
 function Contents({ setProductDetails }) {
   const [products, setProducts] = useState([]);
   const [filteredProduct, setFilteredProduct] = useState([]);
   const [searchField, setSearchField] = useState("");
-  const [image, setImage] = useState("");
+
   const navigate = useNavigate();
-  const storage = getStorage();
 
   useEffect(() => {
     fetchProducts(); // getting the data
@@ -49,52 +42,43 @@ function Contents({ setProductDetails }) {
     navigate("/item");
   };
 
-  const getImageUrl = (imagePath) => {
-    if (!imagePath) return;
-    const imageRef = ref(storage, `${imagePath}`);
-
-    getDownloadURL(imageRef)
-      .then((url) => {
-        setImage(url);
-        console.log(url);
-        return url;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   return (
-    <div className="row">
-      {filteredProduct.map((element) => (
-        /*  getImageUrl(element.image), */
-        <Frame
-          key={element.ID}
-          name={element.item}
-          ImgPath={element.image}
-          handleProduct={() =>
-            handleProduct(element.item, element.image, element.features)
-          }
-          productOverview={element.features}
-          price={element.price}
-        />
-      ))}
+    <div>
+      <NavBarDown />
+      <div style={{ backgroundColor: "whitesmoke" }}>
+        <div className="container">
+          <div className="row mt-3">
+            {filteredProduct.map((element) => (
+              <Frame
+                key={element.ID}
+                name={element.item}
+                ImgPath={element.image}
+                handleProduct={() =>
+                  handleProduct(element.item, element.image, element.features)
+                }
+                productOverview={element.features}
+                price={element.price}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 const Frame = ({ name, ImgPath, handleProduct, productOverview, price }) => {
   return (
-    <div className="col-3">
-      <div className="thumbnail container-div">
-        <button onClick={handleProduct}>
+    <div className="col-sm-3">
+      <button onClick={handleProduct} className="content-frame">
+        <div className="image-container">
           <img src={ImgPath} alt=" to display" className="product-img" />
-          <div className="caption ">
-            <p style={{ width: 240 }}>{name}</p>
-            <p>Ksh {price}</p>
-          </div>
-        </button>
-      </div>
+        </div>
+        <div className="product-caption">
+          <p>{name}</p>
+        </div>
+        <p style={{}}>Ksh {price}</p>
+      </button>
     </div>
   );
 };

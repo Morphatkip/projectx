@@ -1,15 +1,16 @@
 import React from "react";
 import Contents from "../components/Contents";
-import NavBarDown from "../components/Navbar/NavBarDown";
+import Footer from "../components/Footer";
 import NavbarTop from "../components/Navbar/NavbarTop";
+import "../Styles/Home.css";
 
 function Home({ setProductDetails }) {
-  const handleChange = () => {};
   return (
-    <div className="container">
+    <div className="container body">
       <NavbarTop />
-      <NavBarDown />
+
       <Contents setProductDetails={setProductDetails} />
+      <Footer />
     </div>
   );
 }

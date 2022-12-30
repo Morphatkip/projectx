@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../Styles/Navbar.css";
 import searchIcon from "../../images/icons/SearchIcon.png";
 import CartIcon from "../../images/icons/CartIcon.png";
 import "../../Styles/Navbar.css";
 function NavBarDown({ handleChange, setSearchField }) {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("dataKey", JSON.stringify(data));
+  }, [data]);
+
   return (
     <div>
       <div className="navbar navbar-light bg-light d-flex justify-content-center">
         <form>
-          <input type="text" onChange={handleChange} />
+          <input
+            type="text"
+            onChange={(e) => {
+              setSearchField(e.target.value);
+            }}
+          />
           <button type="submit">
             <img src={searchIcon} alt="search icons" />
           </button>

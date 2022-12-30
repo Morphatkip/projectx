@@ -1,9 +1,20 @@
 .product-img {
-  width: 240px;
-  height: 240px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.image-container {
+  height: 20vh;
+}
+.content-frame {
+  height: 30vh;
+  width: 100%;
 }
 
-.container-div {
-  width: 240 px;
-  height: 240px;
+.product-caption {
+  height: 30px;
+  width: 100%;
+  overflow: hidden;
 }

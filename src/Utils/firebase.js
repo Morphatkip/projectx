@@ -6,6 +6,7 @@ import {
   getDoc,
   collection,
   getDocs,
+  setDoc,
 } from "firebase/firestore";
 import {
   getStorage,
@@ -45,4 +46,5 @@ export {
   ref,
   getDownloadURL,
   uploadBytesResumable,
+  setDoc,
 };
